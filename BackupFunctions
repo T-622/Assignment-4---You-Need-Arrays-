@@ -1,0 +1,29 @@
+def binSearch(key, array):
+  '''
+    Function To Effectively Binary Search An Array Of Elements For All Iterations Of A Key. Returns First Term Or No Term
+  '''
+  iterations = 0
+  low = 0
+  high = len(array)-1
+  mid = 0
+  
+  while low <= high:
+ 
+    mid = (high + low) // 2
+  
+    if array[mid] < key:   # If Current Positional Returns Value Smaller Than Key
+      low = mid + 1        # Lowpoint Moved To Start Of Right-Hand Sector Of Array, Eliminating Values On Left Side
+  
+    elif array[mid] > key: # If Current Positional Return Value Larger Than Key
+      high = mid - 1       # High Mark Moved To End Of Left-Hand Sector Of Array, Eliminating Values On Right Side
+  
+    else:      # If An Iteration Of Number Is Detected
+      if mid - 1 < 0:
+        print(mid)
+        return mid
+      if array[mid - 1] != key:  # If The Current Value-1 Is Not The Key, We Know We Have The Required Value
+        print(mid)
+        return mid
+      high = mid - 1 # If We Are Able To Have Iterations Of Our Key Before The Current Value, We Know The High Mark Needs To Move Back
+      
+  return -1
