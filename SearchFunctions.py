@@ -30,6 +30,15 @@ CROSSED = "\033[9m"
 def binSearch(key, array, high, low):
   '''
     Function To Effectively Binary Search An Array Of Elements For All Iterations Of A Key. Returns First Term Or No Term
+
+    Args:
+      => key(int) - Search Term To Be Matched To
+      => array(arr) - Array To Be Searched
+      => high(int) - High-Point For Search To End
+      => low(int) - Low-Point To Begin Searching At
+
+    Returns:
+      None
   '''
   positions = []
   currIndex = 0
@@ -41,11 +50,9 @@ def binSearch(key, array, high, low):
   
     if array[mid] < key:   # If Current Positional Returns Value Smaller Than Key
       return binSearch(key, array, high, mid+1) # Lowpoint Moved To Start Of Right-Hand Sector Of Array, Eliminating Values On Left Side
-      print("Searching Right Side")
   
     elif array[mid] > key: # If Current Positional Return Value Larger Than Key
       return binSearch(key, array, mid-1, low) # High Mark Moved To End Of Left-Hand Sector Of Array, Eliminating Values On Right Side
-      print("Searching Left Side")
   
     else:                        # If An Iteration Of Number Is Detected
       if ((mid - 1) < 0):            # If Current Index-1 Is Smaller Than Zero, And Before Statements Indicate Our Midpoint Isn't Smaller Or Bigger Than Key, This Must Be Our First Iteration
@@ -55,7 +62,7 @@ def binSearch(key, array, high, low):
           if (array[currentIndex] == key):
             iterations += 1
             positions.append(currentIndex)
-          elif (array[currentIndex+1] != key):
+          if (array[currentIndex+1] != key):
             break
           currentIndex += 1
           
@@ -83,11 +90,19 @@ def linSearch(searchTerm,arrays):
   global val
   '''
     Function To Linearly Search For All Iterations Of Search Term In Array
+
+    Args:
+      => searchTerm(int) - Search Term To Be Matched To
+      => arrays(arr) - Array To Be Searched
+
+    Returns:
+      => None
   '''
   positions = []
   firstIndex = 0
   val = 0
-  for x in range (0, len(arrays)):
+  
+  for x in range (0, len(arrays)): 
     if (firstIndex == 0 and arrays[x] == searchTerm):
       firstIndex = x
       
